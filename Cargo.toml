@@ -1,0 +1,18 @@
+[package]
+name = "rust_warp_discovery"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["full"]}
+warp = "0.3"
+serde_json = "1.0"
+
+# cargo build --release
+[profil.release]
+skip = true # Automatically strip symbols from the binary in release build
+opt-level = "s" #Optimize for size #defaults to runtime speed
+lto = true #Enables link time optimization
+codegen-units = 1 #Maximize size reduction optimizations #At the expense of compile time #Prevents build time parallelization
